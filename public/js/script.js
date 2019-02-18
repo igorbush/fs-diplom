@@ -9,30 +9,19 @@ $(document).ready(function() {
     var deleteSeancePopup = $('.delete-seance-popup');
 
     ////////////////////////// LOGIN /////////////
-
-    // $.post('/api/auth/register', {
-    //     'grant_type' : 'password',
-    //     'client_id' : '1',
-    //     'client_secret' : '4tjHz6R4dUTFJsl5jUBEfRrywZ4PcvDQrvP3IyFl',
-    //     'name' : '123@123.ru',
-    //     'email' : '123@123.ru',
-    //     'password' : '123123',
-    //     'password_confirmation' : '123123'
-    // }).done(function(data){console.log(data)}).fail(function(data){console.log(data)});
     
     $('.login-form > .conf-step__button').on('click', function(event) {
         event.preventDefault();
         var grantType = 'password';
-        var clientId = '1';
-        var clientSecret = 'f1cOLS05bPkKT5euXypnIxB1qPBwQHDxHEI1ImGO';
-        var userName = $('.login-form > input:first').val();
-        var password = $('.login-form > input:last').val();
+        var clientId = $('.login-form > input:eq(0)').val();
+        var clientSecret = $('.login-form > input:eq(1)').val();
+        var userName = $('.login-form > input:eq(2)').val();
         $.post('/api/auth/login', {
             'grant_type': grantType,
             'client_id': clientId,
             'client_secret': clientSecret,
             'username': userName,
-            'password': password
+            'password': $('.login-form > input:eq(3)').val()
         }).done(function(data) {
             console.dir(data);
             if (data.token_type) console.log(true + data.token_type);

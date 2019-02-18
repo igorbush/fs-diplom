@@ -16,7 +16,7 @@
     <h1 class="page-header__title">Идём<span>в</span>кино</h1>
   </header>
   <main>
-    <section class="ticket" {{ $ticket->id }}>
+    <section class="ticket" data-id={{ $ticket->id }}>
       
       <header class="tichet__check">
         <h2 class="ticket__check-title">Вы выбрали билеты:</h2>
@@ -35,7 +35,6 @@
         <p class="ticket__info">Стоимость: <span class="ticket__details ticket__cost">{{ $ticket->total_price }}</span> рублей</p>
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <div id="qrcode"></div>
         <button class="acceptin-button">Получить код бронирования</button>
 
         <p class="ticket__hint">После оплаты билет будет доступен в этом окне, а также придёт вам на почту. Покажите QR-код нашему контроллёру у входа в зал.</p>

@@ -10,14 +10,15 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
     <title>GO2Cinema</title>
 </head>
-
 <body>
     <div class="container">
         <header class="page-header login-page">
             <h1 class="page-header__title">Идём<span>в</span>кино</h1>
         </header>
         <main class="conf-steps login-form-container">
-            <form class="login-form">
+            <form class="login-form" data-client="">
+                <input type="hidden" value="{{$client->id}}">
+                <input type="hidden" value="{{$client->secret}}">
                 <input type="email" class="conf-step__input" placeholder="Введите email">
                 <input type="password" class="conf-step__input" placeholder="Введите пароль">
                 <button type="submit" class="conf-step__button conf-step__button-accent">Авторизоваться</button>

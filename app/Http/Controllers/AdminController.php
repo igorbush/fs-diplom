@@ -1,13 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 use App\Models\Film;
 use App\Models\Hall;
 use App\Models\Seance;
 class AdminController extends Controller
 {
+
+    public function getClient() {
+        $client = DB::table('oauth_clients')->find(1);
+        return view('welcome', ['client'=> $client]);
+    }
+
     public function addHall(Request $request) {
         $hall = new Hall;
         $hall->name = $request->name;

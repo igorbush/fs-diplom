@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'AdminController@getClient');
 
 Route::get('/admin', 'AdminController@showAdminPanel');
 
@@ -26,9 +28,6 @@ Route::post('/client/addTicket', 'ClientController@addTicket');
 Route::get('/client/getReservedChars', 'ClientController@getReservedChars');
 
 Route::get('/client/payment', 'ClientController@showTicketClient');
-Route::post('/client/addQrCode', 'ClientController@addQrCode');
 
-Route::get('/client/ticket', function () {
-    return view('ticket');
-});
+Route::post('/client/addQrCode', 'ClientController@addQrCode');
 

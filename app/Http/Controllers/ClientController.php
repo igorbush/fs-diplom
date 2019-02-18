@@ -7,6 +7,7 @@ use App\Models\Film;
 use App\Models\Hall;
 use App\Models\Seance;
 use App\Models\Ticket;
+use Illuminate\Support\Facades\Storage;
 class ClientController extends Controller
 {
     public function showMainClient() {
@@ -47,7 +48,15 @@ class ClientController extends Controller
         return view('payment', ['ticket'=> $ticket, 'seance'=>$seance,'film'=>$film, 'map'=>$map, 'hall'=>$hall]);
     }
     public function addQrCode (Request $request) {
-        // echo $request;
-        return file_put_contents('../i/qrcodes/', file_get_contents($request->url));
+        $base64_str = substr($request->src, strpos($request->src, ",")+1);
+        $image = base64_decode($base64_str);
+        $safeName = str_random(10).'.'.'png';
+        Storage::disk('local')->put($safeName, $image);
+        Ticket::where('id', $request->id)->update(['qr_code' => $safeName]);
+        $response = array(
+            'status' => 'success',
+            'name' => $safeName
+        );
+        return $response;
     }
 }
