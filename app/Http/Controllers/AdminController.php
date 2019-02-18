@@ -76,5 +76,8 @@ class AdminController extends Controller
         return view('admin', ['halls'=> $halls, 'films'=> $films]);
     }
     
+    public function showReceptionPanel() {
+        return view('reception', []);
+    }
     
 }

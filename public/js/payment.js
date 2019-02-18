@@ -1,10 +1,13 @@
 $(document).ready(function() {
     $('.acceptin-button').on('click', function() {
         event.preventDefault();
+        var ticketObject = {};
+        ticketObject['id'] = $('.ticket').data('id');
+        ticketObject['price'] = $('.ticket__cost').text();
+        ticketObject['seance'] = $('.ticket__start').text();    
         var qr = document.createElement("div");
         qr.className = 'qrcode';
         var qrcode = new QRCode(qr, {
-            text: "123",
             width: 200,
             height: 200,
             colorDark : "#000000",
@@ -12,7 +15,7 @@ $(document).ready(function() {
             correctLevel : QRCode.CorrectLevel.H
         });
         qrcode.clear(); 
-        qrcode.makeCode('789');
+        qrcode.makeCode(JSON.stringify(ticketObject));
         setTimeout(function() {
         $.post('addQrCode', {
             '_token': $('meta[name="csrf-token"]').attr('content'),

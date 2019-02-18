@@ -19,6 +19,8 @@ Route::get('/', 'AdminController@getClient');
 
 Route::get('/admin', 'AdminController@showAdminPanel');
 
+Route::get('/reception', 'AdminController@showReceptionPanel');
+
 Route::get('/client', 'ClientController@showMainClient');
 
 Route::get('/client/hall', 'ClientController@showHallClient');

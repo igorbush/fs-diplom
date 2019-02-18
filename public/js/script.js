@@ -607,5 +607,4 @@ $(document).ready(function() {
             $(this).val(val.join(':'));
         }
     });
-
 });
