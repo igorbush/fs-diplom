@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Film;
 use App\Models\Hall;
 use App\Models\Seance;
+use App\Models\Ticket;
 class AdminController extends Controller
 {
 
@@ -77,7 +78,15 @@ class AdminController extends Controller
     }
     
     public function showReceptionPanel() {
-        return view('reception', []);
+        return view('reception');
+    }
+    public function findTicket(Request $request) {
+        $ticket = Ticket::find($request->ticket_id);
+        $seance = Seance::find($ticket->seance_id);
+        $film = Film::find($seance->film_id);
+        $hall = Hall::find($seance->hall_id);
+        $result = ['map'=> $ticket->reserved_map, 'film'=> $film->title, 'hall'=> $hall->name];
+        return $result;
     }
     
 }

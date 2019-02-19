@@ -424,6 +424,26 @@ body {
   height: 20rem;
 }
 
+.fileupload {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.reception-button {
+  width: 200px;
+  padding: 12px 27px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
 @media screen and (min-width: 479px) {
   .page-nav .page-nav__day {
     padding: 1rem 2rem;

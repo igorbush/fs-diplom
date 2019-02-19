@@ -11,13 +11,11 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', 'AdminController@getClient');
 
 Route::get('/admin', 'AdminController@showAdminPanel');
+
+Route::get('/reception/findTicket', 'AdminController@findTicket');
 
 Route::get('/reception', 'AdminController@showReceptionPanel');
 
