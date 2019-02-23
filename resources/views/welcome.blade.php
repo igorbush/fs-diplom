@@ -10,6 +10,11 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
     <title>GO2Cinema</title>
 </head>
+<script>
+    if(localStorage.getItem('access_token')) {
+        location.href = '/admin';
+    }
+    </script>
 <body>
     <div class="container">
         <header class="page-header login-page">
@@ -27,8 +32,6 @@
         </main>
     </div>
     <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="js/jquery.maskedinput.js" type="text/javascript"></script>
-    <script src="js/script.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>

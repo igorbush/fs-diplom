@@ -8,34 +8,6 @@ $(document).ready(function() {
     var addSeancePopup = $('.add-seance-popup');
     var deleteSeancePopup = $('.delete-seance-popup');
 
-    ////////////////////////// LOGIN /////////////
-    
-    $('.login-form > .conf-step__button').on('click', function(event) {
-        event.preventDefault();
-        var grantType = 'password';
-        var clientId = $('.login-form > input:eq(0)').val();
-        var clientSecret = $('.login-form > input:eq(1)').val();
-        var userName = $('.login-form > input:eq(2)').val();
-        $.post('/api/auth/login', {
-            'grant_type': grantType,
-            'client_id': clientId,
-            'client_secret': clientSecret,
-            'username': userName,
-            'password': $('.login-form > input:eq(3)').val()
-        }).done(function(data) {
-            console.dir(data);
-            if (data.token_type) console.log(true + data.token_type);
-            localStorage.setItem('access_token', data.access_token);
-            localStorage.setItem('token_type', data.token_type);
-            localStorage.setItem('user', userName);
-            location.href = '/admin';
-        }).fail(function() {
-            console.log(false);
-            $('.login-form > input').css('outline', '1px solid #F4645F');
-            $('.login-form .error-alert').addClass('error-off');
-        });
-    });
-
     ///////////////////////// ACCORDEON //////////
 
     $('.conf-step__header').click(function() {
@@ -586,7 +558,6 @@ $(document).ready(function() {
                     Authorization: localStorage.getItem('token_type') + ' ' + localStorage.getItem('access_token')
                 }
             }).done(function(data) {
-                console.log(1);
                 currentFilm.remove();
             }).fail(function(data) {
                 console.log(data);
@@ -594,6 +565,34 @@ $(document).ready(function() {
         });
     }
     deleteFilm();
+
+    ////////////////////////  REDIRECT ON OPENSALES'CLICK  //////////
+
+    $('.open-sale').click(function() {
+        event.preventDefault();
+        location.href = '/reception';
+    });
+
+    ////////////////////////  LOGOUT  //////////
+
+    $('.exit-btn').click(function() {
+        event.preventDefault();
+        $.ajax({
+            url: '/api/auth/logout',
+            type: 'get',
+            headers: {
+                Accept: 'application/json',
+                Authorization: localStorage.getItem('token_type') + ' ' + localStorage.getItem('access_token')
+            }
+        }).done(function(data) {
+            console.log(data);
+            localStorage.clear();
+            location.href = '/login';
+        }).fail(function(data) {
+            console.log(data);
+        });
+    });
+
     ////////////////////////  INPUT MASK FOR SEANCE'S TIME  //////////
 
     $.mask.definitions['H'] = '[012]';

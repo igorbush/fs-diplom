@@ -7,6 +7,7 @@ use App\Models\Film;
 use App\Models\Hall;
 use App\Models\Seance;
 use App\Models\Ticket;
+
 class AdminController extends Controller
 {
 

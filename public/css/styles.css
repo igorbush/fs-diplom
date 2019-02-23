@@ -36,6 +36,10 @@ button,
     margin: 0 auto;
 }
 
+.conf-steps {
+    position: relative;
+}
+
 .conf-step__wrapper,
 .conf-step__header,
 .page-header {
@@ -698,4 +702,28 @@ button,
 
 .login-form .error-off {
     display: block;
+}
+
+.exit-btn {
+    font-size: 10px;
+    padding: 10px;
+    margin: 0;
+    position: absolute;
+    top: -40px;
+    right: 0;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.24), 0px 0px 3px rgba(0, 0, 0, 0.12);
+    border-radius: 3px;
+    border: none;
+    background-color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition-property: background-color;
+    transition-duration: .5s;
+    transition-timing-function: ease;
+}
+
+.exit-btn:hover,
+.exit-btn:focus {
+    background-color: #EEEAF1;
+    outline: none;
 }

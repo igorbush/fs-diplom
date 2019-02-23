@@ -9,7 +9,11 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
   <title>GO2Cinema</title>
 </head>
-
+<script>
+if(!localStorage.getItem('access_token')) {
+    location.href = '/login';
+}
+</script>
 <body>
 
   <header class="page-header">
@@ -18,6 +22,7 @@
   </header>
   
   <main class="conf-steps">
+      <button class="exit-btn">Выйти из системы </button>
     <section class="conf-step">
       <header class="conf-step__header conf-step__header_opened">
         <h2 class="conf-step__title">Управление залами</h2>
@@ -141,7 +146,7 @@
       </header>
       <div class="conf-step__wrapper text-center">
         <p class="conf-step__paragraph">Всё готово, теперь можно:</p>
-        <button class="conf-step__button conf-step__button-accent">Открыть продажу билетов</button>
+        <button class="conf-step__button conf-step__button-accent open-sale">Открыть продажу билетов</button>
       </div>
     </section>   
   </main>

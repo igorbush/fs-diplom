@@ -8,6 +8,7 @@ use App\Models\Hall;
 use App\Models\Seance;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Storage;
+
 class ClientController extends Controller
 {
     public function showMainClient() {

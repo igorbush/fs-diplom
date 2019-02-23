@@ -10,7 +10,11 @@
   <link rel="stylesheet" href="../css/styles-client.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 </head>
-
+<script>
+  if(!localStorage.getItem('access_token')) {
+      location.href = '/login';
+  }
+  </script>
 <body>
   <header class="page-header">
     <h1 class="page-header__title">Идём<span>в</span>кино</h1>
@@ -19,6 +23,7 @@
     <section class="ticket">
       <header class="tichet__check">
         <h2 class="ticket__check-title">Проверка электронного билета</h2>
+        <button class="acceptin-button reception-button exit-btn">Выйти из системы </button>
       </header>
       <div class="ticket__info-wrapper">
         <img class="ticket__info-qr hidden" src="">
