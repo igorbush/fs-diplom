@@ -7,13 +7,12 @@ use App\Models\Film;
 use App\Models\Hall;
 use App\Models\Seance;
 use App\Models\Ticket;
-
 class AdminController extends Controller
 {
 
     public function getClient() {
-        $client = DB::table('oauth_clients')->find(1);
-        return view('welcome', ['client'=> $client]);
+        $client = DB::table('oauth_clients')->get();
+        return view('welcome', ['client'=> $client[0]]);
     }
 
     public function addHall(Request $request) {

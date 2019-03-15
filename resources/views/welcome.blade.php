@@ -21,9 +21,11 @@
             <h1 class="page-header__title">Идём<span>в</span>кино</h1>
         </header>
         <main class="conf-steps login-form-container">
-            <form class="login-form" data-client="">
+            <form class="login-form">
+            @if (isset($client->id))
                 <input type="hidden" value="{{$client->id}}">
                 <input type="hidden" value="{{$client->secret}}">
+            @endif
                 <input type="email" class="conf-step__input" placeholder="Введите email">
                 <input type="password" class="conf-step__input" placeholder="Введите пароль">
                 <button type="submit" class="conf-step__button conf-step__button-accent">Авторизоваться</button>

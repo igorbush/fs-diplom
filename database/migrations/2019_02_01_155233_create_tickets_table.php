@@ -18,7 +18,7 @@ class CreateTicketsTable extends Migration
             $table->integer('seance_id');
             $table->string('reserved_map');
             $table->integer('total_price');
-            $table->string('qr_code');
+            $table->string('qr_code')->nullable();
         });
     }
 

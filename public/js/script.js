@@ -122,7 +122,9 @@ $(document).ready(function() {
             roomLi.append(roomInputRadio);
             roomLi.append(roomSpan);
             $('.conf-step__selectors-box:first').append(roomLi);
-            $('.conf-step__selectors-box:last').append(roomLi.clone());
+            var cloneRomeLi = roomLi.clone();
+            cloneRomeLi.children('input').prop('name', 'prices-hall');
+            $('.conf-step__selectors-box:last').append(cloneRomeLi);
             var seancesHall = $('<div>', {class: 'conf-step__seances-hall ui-droppable'});
             var seanceTitle = $('<h3>', {class: 'conf-step__seances-title', text: roomInputName});
             var seanceTimeLine = $('<div>', {class: 'conf-step__seances-timeline ui-droppable', 'data-id': data.id});
@@ -172,9 +174,14 @@ $(document).ready(function() {
             var filmId = data.id;
             var filmName = data.title;
             var filmDuration = data.duration;
-            var filmPoster = data.poster;
+            var filmPoster;
+            if(data.poster.indexOf('http') + 1) {
+                filmPoster = data.poster;
+            } else {
+                filmPoster = 'i/' + data.poster;
+            }
             var filmDiv = $('<div>', {class: 'conf-step__movie ui-draggable ui-draggable-handle', 'data-id': filmId});
-            filmImg = $('<img>', {class:'conf-step__movie-poster', alt: 'poster',src: 'i/'+filmPoster});
+            filmImg = $('<img>', {class:'conf-step__movie-poster', alt: 'poster',src: filmPoster});
             var filmTitle = $('<h3>', {class:'conf-step__movie-title', text: filmName});
             var filmP = $('<p>', {class:'conf-step__movie-duration', text: filmDuration + ' минут'});
             filmDiv.append(filmImg);
