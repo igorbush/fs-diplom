@@ -25,10 +25,13 @@
       <div class="ticket__info-wrapper">
         <p class="ticket__info">На фильм: <span class="ticket__details ticket__title">{{ $film->title }}</span></p>
         @foreach ($map as $key => $row)
-          <p class="ticket__info">Ряд: <span class="ticket__details ticket__chairs">{{ $key }}</span></p>
-          @foreach ($row as $chair)
-            <p class="ticket__info">Место: <span class="ticket__details ticket__chairs">{{ $chair }}</span></p>
-          @endforeach
+          <p class="ticket__info">Ряд: <span class="ticket__details ticket__chairs">{{ $key }}</span>
+            Место: <span class="ticket__details ticket__chairs ticket__chair">
+            @foreach ($row as $chair)
+             {{ $chair }},
+            @endforeach
+            </span>
+          </p>
         @endforeach
         <p class="ticket__info">В зале: <span class="ticket__details ticket__hall">{{ $hall->name }}</span></p>
         <p class="ticket__info">Начало сеанса: <span class="ticket__details ticket__start">{{ $seance->time }}</span></p>

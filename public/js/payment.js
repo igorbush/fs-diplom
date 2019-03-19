@@ -32,7 +32,14 @@ $(document).ready(function() {
             console.log(data);
         });
         }, 10);  
-    });  
+    });
+    $('.ticket__chair').each(function () {
+        var strVal = $.trim($(this).text().split(' ').join(''));
+        var lastChar = strVal.slice(-1);
+        if (lastChar == ',') {
+            $(this).text(strVal.slice(0, -1));
+        };
+    });
 });
 
 
